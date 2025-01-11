@@ -10,6 +10,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!--<div class="filter-bar">-->
+<!--    <div class="filter-header">-->
+<!--        <button class="filter-icon">-->
+<!--            <i class="fas fa-gear"></i>-->
+<!--        </button>-->
+<!--        <button class="filter-favorite">-->
+<!--            <i class="far fa-heart"></i>-->
+<!--        </button>-->
+<!--    </div>-->
+
+<!--    <form class="filter-form">-->
+<!--        <label for="department">Wydział</label>-->
+<!--        <input type="text" id="department" name="department" placeholder="Wydział">-->
+
+<!--        <label for="lecturer">Wykładowca</label>-->
+<!--        <input type="text" id="lecturer" name="lecturer" placeholder="Wykładowca">-->
+
+<!--        <label for="subject">Przedmiot</label>-->
+<!--        <input type="text" id="subject" name="subject" placeholder="Przedmiot">-->
+
+<!--        <label for="room">Sala</label>-->
+<!--        <input type="text" id="room" name="room" placeholder="Sala">-->
+
+<!--        <label for="group">Grupa</label>-->
+<!--        <input type="text" id="group" name="group" placeholder="Grupa">-->
+
+<!--        <label for="building">Budynek</label>-->
+<!--        <input type="text" id="building" name="building" placeholder="Budynek">-->
+
+<!--        <label for="album">Numer albumu</label>-->
+<!--        <input type="text" id="album" name="album" placeholder="Numer albumu">-->
+
+<!--        <div class="filter-buttons">-->
+<!--            <button type="submit" class="search-button">Szukaj</button>-->
+<!--            <button type="reset" class="reset-button">Wyczyść filtry</button>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+
 <div class="filter-bar">
     <div class="filter-header">
         <button class="filter-icon">
@@ -21,26 +60,40 @@
     </div>
 
     <form class="filter-form">
-        <label for="department">Wydział</label>
-        <input type="text" id="department" name="department" placeholder="Wydział">
+        <div class="filter-group">
+            <label for="department">Wydział</label>
+            <input type="text" id="department" name="department" placeholder="Wydział">
+        </div>
 
-        <label for="lecturer">Wykładowca</label>
-        <input type="text" id="lecturer" name="lecturer" placeholder="Wykładowca">
+        <div class="filter-group">
+            <label for="lecturer">Wykładowca</label>
+            <input type="text" id="lecturer" name="lecturer" placeholder="Wykładowca">
+        </div>
 
-        <label for="subject">Przedmiot</label>
-        <input type="text" id="subject" name="subject" placeholder="Przedmiot">
+        <div class="filter-group">
+            <label for="subject">Przedmiot</label>
+            <input type="text" id="subject" name="subject" placeholder="Przedmiot">
+        </div>
 
-        <label for="room">Sala</label>
-        <input type="text" id="room" name="room" placeholder="Sala">
+        <div class="filter-group">
+            <label for="room">Sala</label>
+            <input type="text" id="room" name="room" placeholder="Sala">
+        </div>
 
-        <label for="group">Grupa</label>
-        <input type="text" id="group" name="group" placeholder="Grupa">
+        <div class="filter-group">
+            <label for="group">Grupa</label>
+            <input type="text" id="group" name="group" placeholder="Grupa">
+        </div>
 
-        <label for="building">Budynek</label>
-        <input type="text" id="building" name="building" placeholder="Budynek">
+        <div class="filter-group">
+            <label for="building">Budynek</label>
+            <input type="text" id="building" name="building" placeholder="Budynek">
+        </div>
 
-        <label for="album">Numer albumu</label>
-        <input type="text" id="album" name="album" placeholder="Numer albumu">
+        <div class="filter-group">
+            <label for="album">Numer albumu</label>
+            <input type="text" id="album" name="album" placeholder="Numer albumu">
+        </div>
 
         <div class="filter-buttons">
             <button type="submit" class="search-button">Szukaj</button>
@@ -48,5 +101,6 @@
         </div>
     </form>
 </div>
+
 </body>
 </html>
