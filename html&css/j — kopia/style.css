@@ -169,7 +169,6 @@ body {
 }
 
 #calendar-container {
-	position: relative;
     flex: 1; 
     display: flex;
     flex-direction: column;
@@ -187,9 +186,7 @@ body {
 }
 
 #today-button {
-   position: absolute;
-    top: 20px;
-    left: 20px;
+    align-self: flex-end; 
     background-color: #023E84;
     color: white;
     padding: 10px 20px;
@@ -202,59 +199,4 @@ body {
 
 #today-button:hover {
     background-color: #01579b;
-}
-
-
-
-
-
-
-
-/* Calendar button styling */
-.fc-button {
-    background-color: #023E84 !important;
-    color: white !important;
-    font-family: 'Tenor Sans', sans-serif !important;
-    padding: 10px 20px !important;
-    border: none !important;
-    border-radius: 15px !important;
-    cursor: pointer !important;
-    font-size: 14px !important;
-    transition: background-color 0.3s ease-in-out !important;
-}
-
-.fc-button:hover {
-    background-color: #01579b !important;
-}
-
-/* Nadpisywanie */
-.fc-prev-button,
-.fc-next-button,
-.fc-today-button {
-    background-color: #023E84 !important;
-    color: white !important;
-    border-radius: 15px !important;
-    padding: 8px 16px !important;
-}
-
-.fc-prev-button:hover,
-.fc-next-button:hover,
-.fc-today-button:hover {
-    background-color: #01579b !important; 
-}
-
-.fc-button-primary {
-    background-color: #023E84 !important; 
-    color: white !important;
-    padding: 8px 16px !important;
-    border-radius: 15px !important;
-}
-
-.fc-button-primary:hover {
-    background-color: #01579b !important;
-}
-
-
-.fc-toolbar .fc-button {
-    margin: 0 5px !important;
 }
