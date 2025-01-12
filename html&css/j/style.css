@@ -223,7 +223,9 @@ body {
     background-color: #01579b;
 }
 
-
+.filter-favorite.active {
+    color: #ff0000;
+}
 
 
 /* Calendar button styling */
