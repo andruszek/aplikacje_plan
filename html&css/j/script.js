@@ -5,15 +5,14 @@ document.addEventListener('DOMContentLoaded', function () {
         initialView: 'timeGridWeek',
         headerToolbar: {
 			left:'',
-            center: 'prev,next',
+            center: 'prev,today,next',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         buttonText: {
 			share: 'Udostępnij',
             today: 'Dzisiaj',
             month: 'Miesiąc',
-            week: 'Tydzień',
-            day: 'Dzień'
+            week: 'Tydzień'
         },
         locale: 'pl',
         contentHeight: 'auto', 
