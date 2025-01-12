@@ -1,6 +1,6 @@
 <?php
 // Dane połączenia do bazy danych
-$dsn = 'sqlite:H:/projekcik/php/sql/data.db';
+$dsn = 'sqlite:H:/aplikacje_plan/projekcik/php/sql/data.db';
 $username = '';
 $password = '';
 
@@ -20,28 +20,27 @@ try {
     // 1. Opróżniamy tabelę z danych
     $sqlDelete = "DELETE FROM Wykladowcy";
     $pdo->exec($sqlDelete);
-    echo "Tabela 'Wykladowcy' została opróżniona.<br>";
+
+    // Resetujemy wartość AUTOINCREMENT
+    $sqlResetAutoincrement = "DELETE FROM sqlite_sequence WHERE name='Wykladowcy'";
+    $pdo->exec($sqlResetAutoincrement);
+
+    echo "Tabela 'Wykladowcy' została opróżniona i zresetowana.<br>";
 
     // 2. Pobieramy dane z URL
     $data = file_get_contents($url);
     $teachers = json_decode($data, true);
 
     // 3. Przechodzimy przez każdego wykładowcę
-    // 3. Przechodzimy przez każdego wykładowcę
     foreach ($teachers as $teacher) {
         // Rozdzielamy imię i nazwisko
         $fullName = $teacher['item'];
         $nameParts = explode(' ', $fullName);
 
-        // Sprawdzamy, czy mamy więcej niż jedną część (czyli więcej niż jedno słowo)
         if (count($nameParts) > 1) {
-            // Ostatnia część to imię
-            $firstName = array_pop($nameParts);  // Ostatnia część to imię
-
-            // Pozostałe części to nazwisko
-            $lastName = implode(' ', $nameParts);  // Łączymy pozostałe części jako nazwisko
+            $firstName = array_pop($nameParts); // Ostatnia część to imię
+            $lastName = implode(' ', $nameParts); // Pozostałe części to nazwisko
         } else {
-            // Jeśli tylko jedno słowo, traktujemy to jako imię, a nazwisko pozostaje puste
             $firstName = $nameParts[0];
             $lastName = '';
         }
@@ -49,13 +48,14 @@ try {
         // Przygotowujemy zapytanie do bazy danych
         $sql = "INSERT INTO Wykladowcy (Imie, Nazwisko) VALUES (:firstName, :lastName)";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':firstName', $firstName);  // Imię jako Imie
-        $stmt->bindParam(':lastName', $lastName);    // Nazwisko jako Nazwisko
+        $stmt->bindParam(':firstName', $firstName);
+        $stmt->bindParam(':lastName', $lastName);
 
         // Wykonujemy zapytanie
         $stmt->execute();
     }
 
+    echo "Dane zostały zaimportowane.<br>";
 
 } catch (PDOException $e) {
     // Obsługa błędów

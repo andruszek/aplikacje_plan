@@ -12,7 +12,6 @@ CREATE TABLE Przedmioty (
 
 CREATE TABLE Budynek (
                          ID_Budynku INTEGER PRIMARY KEY AUTOINCREMENT,
-                         Adres VARCHAR(100),
                          Nazwa_Budynku VARCHAR(100)
 );
 
