@@ -1,6 +1,10 @@
 <?php
 // Dane połączenia do bazy danych
+<<<<<<< HEAD
 $dsn = 'sqlite:H:/aplikacje_plan/projekcik/php/sql/data.db';
+=======
+$dsn = 'sqlite:C:\Users\kopan\OneDrive\Desktop\judys\aplikacje_plan\projekcik\php\sql\data.db';
+>>>>>>> 0e480612aa0adb26c2b2f8f90f8d9a5661901e69
 $username = '';
 $password = '';
 

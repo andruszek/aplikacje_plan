@@ -10,10 +10,6 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
-=======
->>>>>>> 0e480612aa0adb26c2b2f8f90f8d9a5661901e69
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>

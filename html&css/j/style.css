@@ -106,15 +106,15 @@ body {
 @media screen and (max-width: 600px) {
 
     .filter-bar {
-        width: 100%;
+        width: 95%;
         padding: 10px;
-        margin-top: 1px;
+        margin: 10px auto;
 
     }
 
     .filter-form {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); 
         gap: 10px;
     }
 
@@ -157,39 +157,70 @@ body {
     .reset-button:hover {
         background-color: #01579b;
     }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    #calendar-container {
+        padding: 10px;
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    #today-button, #share-button {
+        padding: 5px 10px;
+        font-size: 12px;
+        justify-content: center; /* Aligns buttons in the center */
+        align-items: center;
+    }
+
+    .fc-button {
+        padding: 5px 10px !important;
+    }
+
+    .fc-prev-button,
+    .fc-next-button{
+        padding: 5px 5px !important;
+    }
 }
 
 
-
 .container {
-    display: flex; 
-    gap: 20px; 
-    align-items: flex-start; 
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
     height: auto;
 }
 
 #calendar-container {
-	position: relative;
-    flex: 1; 
+    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     padding: 20px;
+    padding-bottom:40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #calendar {
     width: 100%;
-    min-height: 600px; 
+    min-height: 800px;
+
 }
 
-#today-button {
-   position: absolute;
-    top: 20px;
-    left: 20px;
+
+#share-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     background-color: #023E84;
     color: white;
     padding: 10px 20px;
@@ -200,14 +231,13 @@ body {
     font-size: 14px;
 }
 
-#today-button:hover {
+#share-button:hover {
     background-color: #01579b;
 }
 
-
-
-
-
+.filter-favorite.active {
+    color: #ff0000;
+}
 
 
 /* Calendar button styling */
@@ -240,11 +270,11 @@ body {
 .fc-prev-button:hover,
 .fc-next-button:hover,
 .fc-today-button:hover {
-    background-color: #01579b !important; 
+    background-color: #01579b !important;
 }
 
 .fc-button-primary {
-    background-color: #023E84 !important; 
+    background-color: #023E84 !important;
     color: white !important;
     padding: 8px 16px !important;
     border-radius: 15px !important;
