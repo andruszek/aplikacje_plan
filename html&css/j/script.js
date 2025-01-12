@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			share: 'Udostępnij',
             today: 'Dzisiaj',
             month: 'Miesiąc',
-            week: 'Tydzień'
+            week: 'Tydzień',
+            day: 'Dzień'
         },
         locale: 'pl',
         contentHeight: 'auto', 
@@ -32,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 
-    document.getElementById('today-button').addEventListener('click', function () {
-        calendar.today();
-    });
+    // document.getElementById('today-button').addEventListener('click', function () {
+    //     calendar.today();
+    // });
 	
 	 document.getElementById('share-button').addEventListener('click', function () {
         navigator.clipboard.writeText(window.location.href)
@@ -59,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             subject: document.getElementById('subject').value,
             room: document.getElementById('room').value,
             group: document.getElementById('group').value,
-            building: document.getElementById('building').value,
             album: document.getElementById('album').value
         };
 
@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // document.getElementById('subject').value = '';
             // document.getElementById('room').value = '';
             // document.getElementById('group').value = '';
-            // document.getElementById('building').value = '';
             // document.getElementById('album').value = '';
         } else {
             // If not active, save filters and heart red jej
@@ -100,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('subject').value = savedFilters.subject || '';
             document.getElementById('room').value = savedFilters.room || '';
             document.getElementById('group').value = savedFilters.group || '';
-            document.getElementById('building').value = savedFilters.building || '';
             document.getElementById('album').value = savedFilters.album || '';
         }
 
