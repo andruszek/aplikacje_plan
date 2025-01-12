@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         buttonText: {
+			share: 'Udostępnij',
             today: 'Dzisiaj',
             month: 'Miesiąc',
             week: 'Tydzień',
@@ -35,4 +36,18 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('today-button').addEventListener('click', function () {
         calendar.today();
     });
+	
+	 document.getElementById('share-button').addEventListener('click', function () {
+        navigator.clipboard.writeText(window.location.href)
+            .then(function () {
+                alert('Skopiwoano link do planu!');
+            })
+            .catch(function (error) {
+                console.error('Błąd kopiowania: ', error);
+            });
+    });
+	
+	
 });
+
+

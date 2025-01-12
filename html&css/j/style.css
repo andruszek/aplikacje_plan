@@ -169,7 +169,7 @@ body {
 }
 
 #calendar-container {
-	position: relative;
+    position: relative;
     flex: 1; 
     display: flex;
     flex-direction: column;
@@ -177,13 +177,14 @@ body {
     gap: 10px;
     background-color: #ffffff; 
     padding: 20px;
+	padding-bottom:40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #calendar {
     width: 100%;
-    min-height: 600px; 
+    min-height: 800px; 
 }
 
 #today-button {
@@ -204,8 +205,23 @@ body {
     background-color: #01579b;
 }
 
+#share-button {
+    position: absolute;
+    bottom: 20px; 
+    right: 20px;  
+    background-color: #023E84;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 14px;
+}
 
-
+#share-button:hover {
+    background-color: #01579b;
+}
 
 
 
