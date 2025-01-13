@@ -1,0 +1,23 @@
+TO TRZEBA BVEDZIE DODAC DO SAL
+
+"LO16_Basen",
+"Gim9_Basen",
+"Boisko",
+"Halasportowa_teniszmiemny",
+"Salarehabilitacyjna",
+"SektorI",
+"SektorII",
+"SektorIII,
+"Siłownia",
+SG_sala
+Basensekcja1
+Basensekcja2
+
+
+TO DO BUDYNKOW
+LO16
+Gim9
+SP55
+SG
+
+
