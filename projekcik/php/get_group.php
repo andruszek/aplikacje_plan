@@ -8,7 +8,6 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Połączono z bazą danych!<br>";
 
-    // 1. Opróżniamy tabelę Grupa i resetujemy licznik AUTOINCREMENT
     $sqlDelete = "DELETE FROM Grupa";
     $pdo->exec($sqlDelete);
     $pdo->exec("DELETE FROM sqlite_sequence WHERE name='Grupa'");

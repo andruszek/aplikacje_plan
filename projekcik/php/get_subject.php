@@ -1,6 +1,6 @@
 <?php
 
-$dsn = 'sqlite:I:/sem5/aplikacje_plan/projekcik/php/sql/data.db';
+$dsn = 'sqlite:H:/aplikacje_plan/projekcik/php/sql/data.db';
 
 try {
 

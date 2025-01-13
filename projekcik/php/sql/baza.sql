@@ -30,7 +30,11 @@ CREATE TABLE Grupa (
                        Nazwa_Grupy VARCHAR(50)
 );
 
-
+CREATE TABLE Sala
+(
+        ID_Sali    INTEGER PRIMARY KEY AUTOINCREMENT,
+        Nazwa_Sali text
+);
 CREATE TABLE Grupa_Student (
                                ID_Grupy INTEGER,
                                Numer_Albumu INTEGER,

@@ -2,63 +2,47 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'timeGridWeek',
-    headerToolbar: {
-        left: '',
-        center: 'prev,today,next',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    buttonText: {
-        share: 'Udostępnij',
-        today: 'Dzisiaj',
-        month: 'Miesiąc',
-        week: 'Tydzień',
-        day: 'Dzień'
-    },
-    locale: 'pl',
-    contentHeight: 'auto',
-    slotMinTime: '07:00:00',
-    slotMaxTime: '21:00:00',
-    allDaySlot: false,
-    nowIndicator: true,
-    firstDay: 1,
-    events: [
-        {
-            title: "siema",
-            start: '2025-01-09T10:00:00',
-            end: '2025-01-09T12:00:00',
-            extendedProps: {
-                forma_zajec: 'lab',
-                budynek: 'wi1',
-                sala: '303',
-            }
+        initialView: 'timeGridWeek',
+        headerToolbar: {
+            left: '',
+            center: 'prev,today,next',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        buttonText: {
+            today: 'Dzisiaj',
+            month: 'Miesiąc',
+            week: 'Tydzień',
+            day: 'Dzień'
+        },
+        locale: 'pl',
+        contentHeight: 'auto',
+        slotMinTime: '07:00:00',
+        slotMaxTime: '21:00:00',
+        allDaySlot: false,
+        nowIndicator: true,
+        firstDay: 1,
+        events: [], // Początkowo brak wydarzeń, będą ładowane dynamicznie z serwera
+        eventContent: function (info) {
+            const extendedProps = info.event.extendedProps;
+
+            const titleEl = document.createElement('div');
+            titleEl.textContent = info.event.title;
+
+            const extraInfoEl = document.createElement('div');
+            extraInfoEl.innerHTML = `
+                <small>
+                    ${extendedProps.forma_zajec || 'Brak informacji'}<br>
+                    ${extendedProps.budynek || 'Brak informacji'}<br>
+                    ${extendedProps.sala || 'Brak informacji'}
+                </small>
+            `;
+
+            const arrayOfDomNodes = [titleEl, extraInfoEl];
+            return { domNodes: arrayOfDomNodes };
         }
-    ],
-    eventContent: function (info) {
-        // Tworzymy własną zawartość wydarzenia
-        const extendedProps = info.event.extendedProps;
+    });
 
-        // Główna treść wydarzenia
-        const titleEl = document.createElement('div');
-        titleEl.textContent = info.event.title;
-
-        // Dodatkowe informacje
-        const extraInfoEl = document.createElement('div');
-        extraInfoEl.innerHTML = `
-            <small>
-                ${extendedProps.forma_zajec || 'Brak informacji'}<br>
-                ${extendedProps.budynek || 'Brak informacji'}<br>
-                ${extendedProps.sala || 'Brak informacji'}
-            </small>
-        `;
-
-        // Łączymy elementy w jedną zawartość
-        const arrayOfDomNodes = [titleEl, extraInfoEl];
-        return { domNodes: arrayOfDomNodes };
-    }
-});
-
-calendar.render();
+    calendar.render();
 
     // document.getElementById('today-button').addEventListener('click', function () {
     //     calendar.today();
@@ -73,6 +57,7 @@ calendar.render();
                 console.error('Błąd kopiowania: ', error);
             });
     });
+
 
     loadSavedFilters();
 
@@ -140,6 +125,34 @@ calendar.render();
         }
     }
 
+    document.querySelector('.filter-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Pobierz wartość z pola "subject"
+        const subject = document.getElementById('subject').value;
+
+        if (!subject) {
+            alert('Podaj nazwę przedmiotu!');
+            return;
+        }
+
+        // Wczytaj wydarzenia z serwera
+        fetch(`get_events.php?subject=${encodeURIComponent(subject)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    // Usuń istniejące wydarzenia i załaduj nowe
+                    calendar.removeAllEvents();
+                    calendar.addEventSource(data);
+                }
+            })
+            .catch(error => {
+                console.error('Błąd podczas ładowania wydarzeń:', error);
+                alert('Nie udało się załadować wydarzeń.');
+            });
+    });
 });
 
 

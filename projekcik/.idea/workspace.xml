@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eb7cd4b-0b6c-450e-8d99-f3cfae913785" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/php/get_zajecia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/get_api.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/get_api_2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/get_api_3.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_bulding.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_bulding.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_department.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_department.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_group.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_sala.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_sala.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_subject.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_subject.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_teacher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_teachers.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_teachers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_zajecia.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get_zajecia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/sql/baza.sql" beforeDir="false" afterPath="$PROJECT_DIR$/php/sql/baza.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/sql/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/php/sql/data.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/wstaw_sale.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/wstaw_sale.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +44,7 @@
   "keyToString": {
     "PHP Script.get_bulding.php.executor": "Run",
     "PHP Script.get_department.php.executor": "Run",
+    "PHP Script.get_events.php.executor": "Run",
     "PHP Script.get_sala.php.executor": "Run",
     "PHP Script.get_teachers.php.executor": "Run",
     "PHP Script.get_zajecia.php.executor": "Run",
@@ -59,11 +64,11 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="PHP Script.get_zajecia.php">
+  <component name="RunManager" selected="PHP Script.get_events.php">
     <configuration name="get_bulding.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_bulding.php">
       <method v="2" />
     </configuration>
-    <configuration name="get_department.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_department.php">
+    <configuration name="get_events.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_events.php">
       <method v="2" />
     </configuration>
     <configuration name="get_sala.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_sala.php">
@@ -77,11 +82,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.get_events.php" />
+        <item itemvalue="PHP Script.get_sala.php" />
         <item itemvalue="PHP Script.get_zajecia.php" />
         <item itemvalue="PHP Script.wstaw_sale.php" />
         <item itemvalue="PHP Script.get_bulding.php" />
-        <item itemvalue="PHP Script.get_sala.php" />
-        <item itemvalue="PHP Script.get_department.php" />
       </list>
     </recent_temporary>
   </component>
@@ -103,6 +108,7 @@
       <updated>1736711113689</updated>
       <workItem from="1736711115377" duration="7322000" />
       <workItem from="1736760004691" duration="13475000" />
+      <workItem from="1736798013192" duration="7313000" />
     </task>
     <servers />
   </component>

@@ -1,17 +1,16 @@
 <?php
-// Dane połączenia do bazy danych
+
 $dsn = 'sqlite:H:/aplikacje_plan/projekcik/php/sql/data.db';
 $username = '';
 $password = '';
 
 try {
-    // Tworzymy obiekt PDO
+
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     echo "Połączono z bazą danych!<br>";
 
-    // Usuń wszystkie rekordy z tabeli Zajecia i zresetuj AUTOINCREMENT
     $sqlDeleteLessons = "DELETE FROM Zajecia";
     $pdo->exec($sqlDeleteLessons);
 
@@ -31,9 +30,9 @@ try {
 
     // Dzisiejsza data
     $today = new DateTime('now');
-    $today->setTime(0, 0, 0); // Ustawienie czasu na początek dnia
+    $today->setTime(0, 0, 0);
 
-    // Funkcja dopasowania najlepszej sali
+
     function findBestRoom($room, $rooms) {
         $bestMatch = null;
         $bestMatchLength = 0;
@@ -51,7 +50,7 @@ try {
         return $bestMatch;
     }
 
-    // Funkcja dopasowania najlepszego budynku
+
     function findBestBuilding($room, $buildings) {
         $bestMatch = null;
         $bestMatchLength = 0;
@@ -69,20 +68,20 @@ try {
         return $bestMatch;
     }
 
-    // Pobierz listę sal
+
     $sqlGetRooms = "SELECT * FROM Sala";
     $rooms = $pdo->query($sqlGetRooms)->fetchAll(PDO::FETCH_ASSOC);
 
-    // Pobierz listę budynków
+
     $sqlGetBuildings = "SELECT * FROM Budynek";
     $buildings = $pdo->query($sqlGetBuildings)->fetchAll(PDO::FETCH_ASSOC);
 
-    // Iteruj przez każdego wykładowcę
+
     foreach ($teachers as $teacher) {
         $teacherName = urlencode($teacher['Nazwisko'] . ' ' . $teacher['Imie']);
         $url = "https://plan.zut.edu.pl/schedule_student.php?teacher=$teacherName";
 
-        // Pobierz dane z API
+
         $data = file_get_contents($url);
         $lessons = json_decode($data, true);
 
@@ -91,20 +90,18 @@ try {
             continue;
         }
 
-        // Przetwarzaj zajęcia
+
         foreach ($lessons as $lesson) {
-            // Pobierz datę zajęć i sprawdź, czy jest późniejsza niż dzisiejsza
+
             $startDateTime = new DateTime($lesson['start']);
             $lessonDate = clone $startDateTime;
-            $lessonDate->setTime(0, 0, 0); // Ustawienie czasu na początek dnia
+            $lessonDate->setTime(0, 0, 0);
 
             if ($lessonDate < $today) {
-                // Ignoruj zajęcia, jeśli ich data jest wcześniejsza niż dzisiejsza
                 echo "Ignoruję zajęcia: " . $lesson['subject'] . " (data: " . $lessonDate->format('Y-m-d') . ")<br>";
                 continue;
             }
 
-            // Pobierz lub utwórz ID_Przedmiotu
             $subject = $lesson['subject'];
             $sqlGetSubject = "SELECT ID_Przedmiotu FROM Przedmioty WHERE Nazwa_Przedmiotu = :subject";
             $stmt = $pdo->prepare($sqlGetSubject);
@@ -121,19 +118,15 @@ try {
                 $subjectId = $pdo->lastInsertId();
             }
 
-            // Wyciągnij ID_Wykladowcy
             $teacherId = $teacher['ID_Wykladowcy'];
 
-            // Znajdź najlepszą salę z tabeli Sala
             $room = $lesson['room'];
             $bestRoom = findBestRoom($room, $rooms);
-            $roomName = $bestRoom ? $bestRoom['Nazwa_Sali'] : $room; // Jeśli nie znajdziesz, użyj tego z API
+            $roomName = $bestRoom ? $bestRoom['Nazwa_Sali'] : $room;
 
-            // Znajdź najlepszy budynek na podstawie nazwy sali
             $bestBuilding = findBestBuilding($room, $buildings);
             $buildingId = $bestBuilding ? $bestBuilding['ID_Budynku'] : null;
 
-            // Wyciągnij ID_Grupy
             $groupName = $lesson['group_name'];
             $sqlGetGroup = "SELECT ID_Grupy FROM Grupa WHERE Nazwa_Grupy = :groupName";
             $stmt = $pdo->prepare($sqlGetGroup);
@@ -149,7 +142,7 @@ try {
                 $groupId = $pdo->lastInsertId();
             }
 
-            // Wyciągnij ID_Wydzialu
+
             $departmentPrefix = explode(' ', str_replace('_', ' ', $room))[0];
             $sqlGetDepartment = "SELECT ID_Wydzialu FROM Wydzial WHERE Nazwa_Wydzialu = :departmentName";
             $stmt = $pdo->prepare($sqlGetDepartment);
@@ -157,13 +150,13 @@ try {
             $stmt->execute();
             $departmentId = $stmt->fetchColumn();
 
-            // Wyciągnij godzinę rozpoczęcia i zakończenia
+
             $startTime = $startDateTime->format('H:i:s');
             $endDateTime = new DateTime($lesson['end']);
             $endTime = $endDateTime->format('H:i:s');
             $dateFormatted = $lessonDate->format('Y-m-d');
 
-            // Wstaw rekord do tabeli Zajecia
+
             $sqlInsertLesson = "
                 INSERT INTO Zajecia (
                     ID_Przedmiotu, Sala, Godzina_Startu, Godzina_Konca, ID_Wykladowcy, ID_Budynku, 
