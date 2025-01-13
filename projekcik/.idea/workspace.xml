@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2eb7cd4b-0b6c-450e-8d99-f3cfae913785" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/php/get_zajecia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_api_2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get_api_3.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/sql/baza.sql" beforeDir="false" afterPath="$PROJECT_DIR$/php/sql/baza.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/sql/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/php/sql/data.db" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="H:\php\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2rXh1YopZPe1Gc8eb6hrtxBO3dt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "PHP Script.get_bulding.php.executor": "Run",
+    "PHP Script.get_department.php.executor": "Run",
+    "PHP Script.get_sala.php.executor": "Run",
+    "PHP Script.get_teachers.php.executor": "Run",
+    "PHP Script.get_zajecia.php.executor": "Run",
+    "PHP Script.wstaw_sale.php.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="PHP Script.get_zajecia.php">
+    <configuration name="get_bulding.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_bulding.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="get_department.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_department.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="get_sala.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_sala.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="get_zajecia.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/get_zajecia.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="wstaw_sale.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/wstaw_sale.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.get_zajecia.php" />
+        <item itemvalue="PHP Script.wstaw_sale.php" />
+        <item itemvalue="PHP Script.get_bulding.php" />
+        <item itemvalue="PHP Script.get_sala.php" />
+        <item itemvalue="PHP Script.get_department.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PS-242.23726.107" />
+        <option value="bundled-php-predefined-a98d8de5180a-90914f2295cb-com.jetbrains.php.sharedIndexes-PS-242.23726.107" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2eb7cd4b-0b6c-450e-8d99-f3cfae913785" name="Changes" comment="" />
+      <created>1736711113689</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736711113689</updated>
+      <workItem from="1736711115377" duration="7322000" />
+      <workItem from="1736760004691" duration="13475000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

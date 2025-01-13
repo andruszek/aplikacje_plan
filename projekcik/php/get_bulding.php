@@ -11,8 +11,8 @@ $buildings = [
     "WE-C127", "WEkon J", "WEkon Ż", "WIMiM CM", "WIMiM HT", "WIMiM KEP",
     "WIMiM KTC", "WIMiM KTE", "WIMiM WM", "WKSiR A", "WKSiR PP1", "WKSiR PP3",
     "WKSiR Sł.17", "WNoZiR A", "WNoZiR B", "WNoZiR C", "WNoZiR D", "WNoZiR J",
-    "WNoZiR KK", "WNoZiR PP", "WTMiT Hala", "WTMiT KTZO", "WTMiT Lab Kl",
-    "WTiICH SCH", "WTiICH NCH"
+    "WNoZiR KK", "WNoZiR PP", "MWTiT", "WTMiT KTZO", "WTMiT Lab Kl",
+    "WTiICH SCH", "WTiICH NCH", "WTMiT WTM"
 ];
 
 // Próba połączenia z bazą danych

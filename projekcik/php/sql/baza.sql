@@ -12,6 +12,7 @@ CREATE TABLE Przedmioty (
 
 CREATE TABLE Budynek (
                          ID_Budynku INTEGER PRIMARY KEY AUTOINCREMENT,
+                         Adres VARCHAR(100),
                          Nazwa_Budynku VARCHAR(100)
 );
 
@@ -28,6 +29,7 @@ CREATE TABLE Grupa (
                        ID_Grupy INTEGER PRIMARY KEY AUTOINCREMENT,
                        Nazwa_Grupy VARCHAR(50)
 );
+
 
 CREATE TABLE Grupa_Student (
                                ID_Grupy INTEGER,
@@ -48,6 +50,7 @@ CREATE TABLE Zajecia (
                          ID_Grupy INTEGER,
                          ID_Wydzialu INTEGER,
                          Data DATE,
+                         Status TEXT,
                          FOREIGN KEY (ID_Przedmiotu) REFERENCES Przedmioty(ID_Przedmiotu),
                          FOREIGN KEY (ID_Wykladowcy) REFERENCES Wykladowcy(ID_Wykladowcy),
                          FOREIGN KEY (ID_Budynku) REFERENCES Budynek(ID_Budynku),
