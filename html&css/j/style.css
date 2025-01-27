@@ -24,6 +24,65 @@ body {
     margin-bottom: auto;
 }
 
+.fc-event {
+    border: none !important;
+}
+
+.fc-event-main {
+    border: none !important;
+}
+
+.fc-event-main-frame {
+    border: none !important;
+}
+
+.fc-event-main {
+    background-color: #4caf50;
+    color: white;
+
+}
+
+.fc-event.status-laboratorium .fc-event-main {
+    background-color: #242b87 !important;
+    color: white !important;
+}
+.fc-event.status-egzamin .fc-event-main {
+    background-color: #d32f2f !important;
+    color: white !important;
+}
+.fc-event.status-wykład .fc-event-main {
+    background-color: #1976d2 !important;
+    color: white !important;
+}
+.fc-event.status-zaliczenie .fc-event-main {
+    background-color: #388e3c !important;
+    color: white !important;
+}
+.fc-event.status-projekt .fc-event-main {
+    background-color: #7b1fa2 !important;
+    color: white !important;
+}
+.fc-event.status-audytoria .fc-event-main {
+    background-color: #ffa726 !important;
+    color: white !important;
+}
+.fc-event.status-odwołane .fc-event-main {
+    background-color: #9e9e9e !important;
+    color: white !important;
+}
+.fc-event.status-terenowe .fc-event-main {
+    background-color: #00897b !important;
+    color: white !important;
+}
+.fc-event.status-lektorat .fc-event-main {
+    background-color: #872438;
+    color: white !important;
+}
+
+
+
+
+
 .filter-header {
     display: flex;
     justify-content: space-between;

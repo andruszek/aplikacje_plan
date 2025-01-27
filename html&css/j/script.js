@@ -1,145 +1,101 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
+    const calendarEl = document.getElementById('calendar');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'timeGridWeek',
-    headerToolbar: {
-        left: '',
-        center: 'prev,today,next',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    buttonText: {
-        share: 'Udostępnij',
-        today: 'Dzisiaj',
-        month: 'Miesiąc',
-        week: 'Tydzień',
-        day: 'Dzień'
-    },
-    locale: 'pl',
-    contentHeight: 'auto',
-    slotMinTime: '07:00:00',
-    slotMaxTime: '21:00:00',
-    allDaySlot: false,
-    nowIndicator: true,
-    firstDay: 1,
-    events: [
-        {
-            title: "siema",
-            start: '2025-01-09T10:00:00',
-            end: '2025-01-09T12:00:00',
-            extendedProps: {
-                forma_zajec: 'lab',
-                budynek: 'wi1',
-                sala: '303',
-            }
+    // Inicjalizacja kalendarza
+    calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'timeGridWeek',
+        headerToolbar: {
+            left: '',
+            center: 'prev,today,next',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        buttonText: {
+            share: 'Udostępnij',
+            today: 'Dzisiaj',
+            month: 'Miesiąc',
+            week: 'Tydzień',
+            day: 'Dzień'
+        },
+        locale: 'pl',
+        contentHeight: 'auto',
+        slotMinTime: '07:00:00',
+        slotMaxTime: '21:00:00',
+        allDaySlot: false,
+        nowIndicator: true,
+        firstDay: 1,
+        events: [], // Puste na start
+        eventContent: function (info) {
+            const extendedProps = info.event.extendedProps;
+            const titleEl = document.createElement('div');
+            titleEl.textContent = info.event.title;
+
+            const extraInfoEl = document.createElement('div');
+            extraInfoEl.innerHTML = `
+                <small>
+                    ${extendedProps.forma_zajec || 'Brak informacji'}<br>
+                    ${extendedProps.budynek || 'Brak informacji'}<br>
+                    ${extendedProps.sala || 'Brak informacji'}
+                    ${extendedProps.imie || 'Brak informacji'}
+                </small>
+            `;
+
+            return { domNodes: [titleEl, extraInfoEl] };
         }
-    ],
-    eventContent: function (info) {
-        // Tworzymy własną zawartość wydarzenia
-        const extendedProps = info.event.extendedProps;
+    });
 
-        // Główna treść wydarzenia
-        const titleEl = document.createElement('div');
-        titleEl.textContent = info.event.title;
+    function fetchEvents(filters) {
+        const queryParams = new URLSearchParams(filters).toString();
+        fetch(`fetch_classes.php?${queryParams}`)
+            .then(response => response.json())
+            .then(data => {
+                const events = data.map(item => ({
+                    title: item.Subject_Name,
+                    start: `${item.Date}T${item.Start}`,
+                    end: `${item.Date}T${item.End}`,
+                    extendedProps: {
+                        forma_zajec: item.Status,
+                        budynek: item.Building_Name,
+                        sala: item.Room_Name,
+                        imie: item.FirstName + ' ' + item.LastName
 
-        // Dodatkowe informacje
-        const extraInfoEl = document.createElement('div');
-        extraInfoEl.innerHTML = `
-            <small>
-                ${extendedProps.forma_zajec || 'Brak informacji'}<br>
-                ${extendedProps.budynek || 'Brak informacji'}<br>
-                ${extendedProps.sala || 'Brak informacji'}
-            </small>
-        `;
+                    },
+                    classNames: [`status-${item.Status.toLowerCase().replace(/\s+/g, '-')}`]
+                }));
 
-        // Łączymy elementy w jedną zawartość
-        const arrayOfDomNodes = [titleEl, extraInfoEl];
-        return { domNodes: arrayOfDomNodes };
-    }
-});
-
-calendar.render();
-
-    // document.getElementById('today-button').addEventListener('click', function () {
-    //     calendar.today();
-    // });
-	
-	 document.getElementById('share-button').addEventListener('click', function () {
-        navigator.clipboard.writeText(window.location.href)
-            .then(function () {
-                alert('Skopiwoano link do planu!');
+                calendar.removeAllEvents();
+                calendar.addEventSource(events);
             })
-            .catch(function (error) {
-                console.error('Błąd kopiowania: ', error);
-            });
-    });
+            .catch(error => console.error("Błąd podczas pobierania wydarzeń:", error));
+    }
 
-    loadSavedFilters();
+    const form = document.getElementById('filterForm');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    document.querySelector('.filter-favorite').addEventListener('click', function () {
-        saveFilters();
-    });
 
-    function saveFilters() {
+        const subjectName = document.getElementById('subject').value.trim();
+        const teacherName = document.getElementById('teacher').value.trim();
+        const roomName = document.getElementById('room').value.trim();
+        const groupName = document.getElementById('group').value.trim();
+        const buildingName = document.getElementById('department').value.trim(); // Wydział
+
         const filters = {
-            department: document.getElementById('department').value,
-            lecturer: document.getElementById('lecturer').value,
-            subject: document.getElementById('subject').value,
-            room: document.getElementById('room').value,
-            group: document.getElementById('group').value,
-            album: document.getElementById('album').value
+            subjectName,
+            teacherName,
+            roomName,
+            groupName,
+            buildingName
         };
 
-        const heartButton = document.querySelector('.filter-favorite');
-        const savedFilters = JSON.parse(localStorage.getItem('favoriteFilters'));
-        const heartState = localStorage.getItem('heartState');
 
-        // if active, remove from favourites
-        if (heartState === 'active') {
+        Object.keys(filters).forEach(key => {
+            if (!filters[key]) {
+                delete filters[key];
+            }
+        });
 
-            localStorage.removeItem('favoriteFilters');
-            localStorage.setItem('heartState', 'inactive');
-            heartButton.classList.remove('active');
-            heartButton.innerHTML = '<i class="far fa-heart"></i>';
+        fetchEvents(filters);
+    });
 
-            // // clearing filters
-            // document.getElementById('department').value = '';
-            // document.getElementById('lecturer').value = '';
-            // document.getElementById('subject').value = '';
-            // document.getElementById('room').value = '';
-            // document.getElementById('group').value = '';
-            // document.getElementById('album').value = '';
-        } else {
-            // If not active, save filters and heart red jej
-            localStorage.setItem('favoriteFilters', JSON.stringify(filters));
-            heartButton.classList.add('active');
-            heartButton.innerHTML = '<i class="fas fa-heart"></i>';
-            localStorage.setItem('heartState', 'active');
-        }
-    }
-
-    function loadSavedFilters() {
-        const savedFilters = JSON.parse(localStorage.getItem('favoriteFilters'));
-        if (savedFilters) {
-            document.getElementById('department').value = savedFilters.department || '';
-            document.getElementById('lecturer').value = savedFilters.lecturer || '';
-            document.getElementById('subject').value = savedFilters.subject || '';
-            document.getElementById('room').value = savedFilters.room || '';
-            document.getElementById('group').value = savedFilters.group || '';
-            document.getElementById('album').value = savedFilters.album || '';
-        }
-
-        const heartState = localStorage.getItem('heartState');
-        const heartButton = document.querySelector('.filter-favorite');
-        if (heartState === 'active') {
-            heartButton.classList.add('active');
-            heartButton.innerHTML = '<i class="fas fa-heart"></i>'; // Solid heart
-        } else {
-            heartButton.classList.remove('active');
-            heartButton.innerHTML = '<i class="far fa-heart"></i>'; // Regular heart
-        }
-    }
-
+    calendar.render();
 });
-
-

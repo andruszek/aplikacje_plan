@@ -1,4 +1,4 @@
-CREATE TABLE Wykladowcy (
+CREATE TABLE Teacher (
                             ID_Wykladowcy INTEGER PRIMARY KEY AUTOINCREMENT,
                             Imie VARCHAR(50),
                             Nazwisko VARCHAR(50)
